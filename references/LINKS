@@ -1,3 +1,12 @@
+Common about DVCS
+--------------
+Distributed Version Control is here to stay, baby: http://joelonsoftware.com/items/2010/03/17.html
+Comments on Open Source Software / Free Software (OSS/FS) Software Configuration Management (SCM) / Revision-Control Systems (look at Part 2. Centralized vs. Decentralized SCM): http://www.dwheeler.com/essays/scm.html
+
+
+
+Git
+--------------
 Git for computer scientists: http://eagain.net/articles/git-for-computer-scientists/
 Git magic online: http://www-cs-students.stanford.edu/~blynn/gitmagic/
 Git Pro Book: http://progit.org/book/
