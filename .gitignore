@@ -1,0 +1,4 @@
+*.pdf
+!references/*.pdf
+*.log
+*.aux
