@@ -1,0 +1,35 @@
+A brief history of DCVS
+
+Properties of a DCVS:
+	- Server connection
+	- local repository
+	- Begriffserklärung: branching / merging / rebasing / stageing / tagging
+
+Change of Workflows from "normal CVS" to DCVS
+
+Git:
+History of Git: - Who, Why....
+
+What does Git do different compared to other DCVS.
+	- Encryption and Compression?
+
+How does git work (??)	
+
+Current development: Who uses git? github.com?
+
+Conclusion
+
+TOC:
+ - Abstract (Klaus)
+ - Introduction (Klaus)
+ - General description DCVS (Properties)
+		- A brief history of DCVS (Klaus)
+		- Begriffserklärung (Simon)
+		- Changing of Workflows (Simon)
+ - Git 
+		- History (Klaus)
+		- How does git work? (Rich)
+		- Compariosn to other DCVS (Rich)
+		- Current development + github (Rich)
+ - Conclusion
+ - Bibliography

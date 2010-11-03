@@ -2,3 +2,5 @@
 !references/*.pdf
 *.log
 *.aux
+*.bbl
+*.blg
