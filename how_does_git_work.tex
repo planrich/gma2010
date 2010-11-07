@@ -1,0 +1,15 @@
+\section{How does git work?}
+
+As any other VCS git stores its data in the repository folder. 
+
+\begin{lstlisting}
+touch README
+git init
+git add README
+git commit -m "First commit"
+\end{lstlisting}
+
+
+\subsection {What makes git to a DVCS?}
+
+Nearly all commands that git offer you are local operations. The whole history of your project is contained in your local repository. Also all contributors of one project have that history with local changes. Therefor no repository has more information about the project than the other. Thats what git does and this makes git to a distributed verion control system.
