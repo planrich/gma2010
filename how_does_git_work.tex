@@ -1,13 +1,22 @@
 \section{How does git work?}
 
-As any other VCS git stores its data in the repository folder. 
-
+As any other VCS git stores its data in the repository directory. First command you have to executed in your new repository is:
 \begin{lstlisting}
-touch README
-git init
-git add README
-git commit -m "First commit"
+$ git init
 \end{lstlisting}
+This command creates a new directory .git/ where all your version control data is stored. Without this directory the folder is not a repository. \cite{gitinternals2008} p 55 \\
+
+\subsection {Basic commands}
+
+There are several basic commands one should know working with git:
+\begin{lstlisting}
+$ touch README
+$ git add README
+$ git commit -m "Added readme file"
+\end{lstlisting}
+
+This code produces an empty README file and we track this file simply by telling git to track the file. Then we commit our changes with a short and descriptive message. Git now stores the new file in the repository and index. The master branch, which is the default branch, is now pointing towards this new state of the repository. \cite{gitinternals2008} p 55 \\
+
 
 
 \subsection {What makes git to a DVCS?}
