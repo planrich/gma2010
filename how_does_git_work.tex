@@ -1,6 +1,9 @@
-\section{How does git work?}
+\section{How does git work internally?}
 
 To understand how git works we need to know some basic commands.
+
+\subsection {Basic commands}
+
 As any other VCS git stores its data in the repository directory.
 There are two major ways to get a repository.
 One would be by simply creating a new empty git repository in your directory of choice:
@@ -10,18 +13,16 @@ $ git init
 This command creates a new subdirectory .git/ where all your version control
 data is stored. \cite{gitinternals2008} p 55 \\
 The second is to clone an existing repository over an URL. Possible protocols
-are SSH HTTPS HTTP or GIT. Of course on the target location must host a git
-repository:
+are FILE SSH HTTPS HTTP or GIT. Of course on the target location must host a
+git repository:
 \begin{lstlisting}
-$ git clone git://github.com/rails/rails.git
+$ git clone 
+    git://github.com/rails/rails.git
 \end{lstlisting}
-Git will will clone the whole ruby on rails project from github and we're
-ready to get to work. \cite{gitinternals2008} p 56
+Git will clone the whole ruby on rails project from github and we're
+ready to get to work. \cite{gitinternals2008} p 56 \\
 
-\subsection {Basic commands}
-
-After we have a new repository there are several basic commands one should know
-working with git:
+After we have a new repository we can add some content:
 \begin{lstlisting}
 $ touch README
 $ git status
@@ -31,50 +32,62 @@ $ git commit -m "Added README file"
 
 This code produces an empty README file. The status command displays any change
 of the repository. There we can see that the README file has been added and we
-track this file simply by telling git to add the file. Additionally git now
-stages the file, but we are going to cover the staging feature later in the next
-chapter. Then we commit the changes with a short and descriptive message. Git
-now stores the new file in the repository and index. The master branch, 
-which is the default branch, is pointing towards this new state of the repository. \cite{gitinternals2008} p 55 \\
+track this file simply by telling git to add the file to the index. Additionally
+git now stages the file, but we are going to cover the staging feature later in the next
+section. Then we commit the changes with a short and descriptive message. After
+this git stores the changes into the repository and points the default master
+branch to the new commit. \cite{gitinternals2008} p 55 \\
 
-
-
-
-To collaborate with other people it is very important to share your work or get
-other work over the internet or just over a network. You can do that easily with
-a provider like github. Cloneing a repository is that easy:
-
-
-
-This command  \cite{gitpro2009}
-%page missing - chapter Getting a Git Repository
-Additionally git creates a new remote host called origin.
-
-After there has been commited a huge amount of work in the local ruby on rails
-reposiotry we can share the work telling git:
+After there has been committed a huge amount of work in the local ruby on rails
+repository we can share the work telling git:
 
 \begin{lstlisting}
 $ git push origin master 
 \end{lstlisting}
 
-This command will only succeed if you have the appropriet access rights to the
-project. But if we had them, the master parameter
-tells git to take the default branch and transmit it to the host. We could also
-specify any other branch we already have. The origin parameter is translated and
-points to the github server.
+This command will only succeed if you have the appropriate access rights to the
+project. But if we had them, the master parameter tells git to take the default
+branch and transmit the changes to the host. We could also specify any other
+branch and transmit it to the destination host. \\ 
 
+Also one should know that the origin parameter is our destination. You can
+simply add many different socalled remotes:
 
+\begin{lstlisting}
+$ git remote add [name] [url]
+\end{lstlisting}
 
+This command links a short name to any url and you can share your
+work over any network git is designed for. \cite{gitpro2009} chapter 2.9 \\
 
+The last very important command is:
+\begin{lstlisting}
+$ git fetch origin
+\end{lstlisting}
 
-
-
-
+The fetch command is used to get work from other people of your project since
+the last time you fetched. Very important is that this command does not
+automatically merge the new updates into your local master branch. It just
+downloads the updates and creates a new brach FETCH\_HEAD. Then you have to
+manually merge the branch FETCH\_HEAD to the desired branch. 
+If you dont need this very powerful feature you can simply execute:
+\begin{lstlisting}
+$ git pull origin
+\end{lstlisting}
+Git will automatically merge the changes into your master branch.
+\cite{gitpro2009} chapter 2.9 \\
 
 \subsection {What makes git to a DVCS?}
 
-Nearly all commands that git offer you are local operations. 
-The whole history of your project is contained in your local repository. 
-Also all contributors of one project have that history with local changes. 
-Therefor no repository has more information about the project than the other.
-That is what git does and this makes git to a distributed verion control system.
+Linus Torvalds did a quite good job to summarize what distributed means:
+
+\zitat{Beeing distributed very much means that you do not have one
+central location that keeps track of your data, no single place more important
+than any other place\ldots} \cite{linustorvaldsgoogletalk2007}
+
+Nearly all commands that git offer you are local operations. There is no need to
+have any network connection at all to work on your project and track changes
+afterwards. Moreover the whole history of your project is contained in your
+local repository. Also all contributors of one project have that history if
+they pull from you. Hence no repository has more information about the project
+than the other.
