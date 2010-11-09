@@ -2,7 +2,7 @@
 
 To understand how git works we need to know some basic commands.
 
-\subsection {Basic commands}
+\subsection {Basic local commands}
 
 As any other VCS git stores its data in the repository directory.
 There are two major ways to get a repository.
@@ -37,6 +37,8 @@ git now stages the file, but we are going to cover the staging feature later in 
 section. Then we commit the changes with a short and descriptive message. After
 this git stores the changes into the repository and points the default master
 branch to the new commit. \cite{gitinternals2008} p 55 \\
+
+\subsection{Git over network}
 
 After there has been committed a huge amount of work in the local ruby on rails
 repository we can share the work telling git:
@@ -77,13 +79,50 @@ $ git pull origin
 Git will automatically merge the changes into your master branch.
 \cite{gitpro2009} chapter 2.9 \\
 
+\subsection {Staging}
+
+Now that we convered the fundamental basics of git. We can take a deeper look at
+some parts of the logic used by git. One high level feature of git is the
+\emph{interactive adding}. We create a new repository and add a file and commit
+it. If we modify the same file again and try to commit with the command above,
+git will not apply the modified file to the repository. This is because this file is
+not explicitly added to the socalled staging mode. You have to explicitly add
+the modified file to the staging mode and commit. This feature gives you much
+more control over what goes into your repository or not. This feature is often
+ignored and you can simply commit a unstaged file with this command:
+
+\begin{lstlisting}
+$ git commit -a -m "message"
+\end{lstlisting}
+
+The parameter \emph{-a} automatically adds the file to the staging mode and
+commits it. \cite{gitpro2009} chapter 2.2
+
+The picture taken out of the git pro book illustrates how files change their
+lifecycle modes:
+
+\begin{figure}[h]
+  \includegraphics{img/file_status_lifecycle}
+  \caption{File status lifecycle}
+  \label{fig:File status lifecycle}
+  \cite{piclifecycle}
+\end{figure}
+
+As we can see there are four modes a file can have. First we have to track them
+once to get them into the lifecycle. If we modify we can use \emph{-a} on the
+commit command to automatically stage and commit them, or we can take alot more
+of control of our repository and stage them manually and avoid mistakes and
+redundant changes that do not belong to a certain commit.
+We can simply get information about the mode using the git command
+\emph{status}. \cite{gitpro2009} chapter 2.2
+
 \subsection {What makes git to a DVCS?}
 
 Linus Torvalds did a quite good job to summarize what distributed means:
 
-\zitat{Beeing distributed very much means that you do not have one
+\zitat{Being distributed very much means that you do not have one
 central location that keeps track of your data, no single place more important
-than any other place\ldots} \cite{linustorvaldsgoogletalk2007}
+than any other place \ldots } \cite{linustorvaldsgoogletalk2007}
 
 Nearly all commands that git offer you are local operations. There is no need to
 have any network connection at all to work on your project and track changes
