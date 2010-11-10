@@ -2,5 +2,13 @@
 
 \subsection{Snapshots instead of differeces}
 
-Git uses a unique store model compared to other common DVCS like Baazar or Mercurial. In tradional distributed or normal version control the system keeps differences between revision A and B. These changes are saved and marked with a revision number. So you can, at any time, switch back to any revision and rebuild the complete content. This does have some major downsides which we will see later. \\
-Git does handle it quite different. It takes socalled snapshots of every new version. So if file A changes in your repository the next commit git will take a new snapshot of this file and all other files. To reduce overhead not changed files are linked to the identical file in the previous verion. It creates a new minifile system rather than a VCS, enabling you all the features normal version control would give you and gives you some additional on top of it. \cite{gitpro2009} 
+Git uses a unique store model compared to other common DVCS like Baazar or Mercurial. 
+In tradional distributed or normal version control the system keeps differences between revision A and B. 
+These changes are saved and marked with a revision number. 
+So you can, at any time, switch back to any revision and rebuild the complete content.
+This does have some major downsides which we will see later. \\
+Git does handle it quite different. It takes socalled snapshots of every new version. 
+So if file A changes in your repository the next commit git will take a new snapshot of this file and all other files. 
+To reduce overhead not changed files are linked to the identical file in the previous verion. 
+It creates a new minifile system rather than a VCS, enabling you all the features normal version 
+control would give you and gives you some additional on top of it. \cite{gitpro2009} 
