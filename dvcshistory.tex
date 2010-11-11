@@ -1,11 +1,10 @@
 \section {A brief history of Distributed Version Control Systems}
 
-Before Distributed Version Control Systems (DVCS) were introduced, Centralized Version Control Systems (CVCS) were the common system to handle team development.
-These traditional CVCS were built up in the following way: One central server stores the content of the project, along with a history of the changes made. This means that the complete content (all changes) have to pass the central server. In other words: One developer commits changes (to the server), and all other developers have to update to this version from the server.
+The history of Distributed Version Control Systems began with BitKeeper, 1997-1999, by Larry McVoy. BitKeeper was (and still is!) already fully decentralized, able to merge as well as able to store a change history. In 2002, BitKeeper became very successful when Linus Torvalds used BitKeeper to handle the Linux Kernel development.
 
-//INCLUDE PICTURE - CENTRALIZED VCS
+History continues with GNU Arch in year 2001/2002. It was made by Tom Lord, that's why it is also referred to as tla - Tom Lord's Arch. Development stopped in 2005, but Arch nowadays has many siblings, for instance ArX and Bazaar.
 
-Although this system might look simple and effective at the first place, it has quite a few drawbacks.
+Around 2003, a lot of new DVCS projects came up, including Monotone, Darcs and Codeville. All of them were based on the ideas of GNU Arch and also influenced each others in their development.
 
-
-\cite{branchingstrategies2010}
+Later, in 2005, Git and Mercurial came up. Mercurial was widely inspired by Monotone. Git by Linus Torvalds is based on the ideas of BitKeeper, but Git is definitely not a BitKeeper clone. Just the basic ideas are the same.
+\cite{understandingvcs}
