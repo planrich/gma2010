@@ -111,10 +111,106 @@ lifecycle modes:
 As we can see there are four modes a file can have. First we have to track them
 once to get them into the lifecycle. If we modify we can use \emph{-a} on the
 commit command to automatically stage and commit them, or we can take alot more
-of control of our repository and stage them manually and avoid mistakes and
+control of our repository and stage them manually and avoid mistakes and
 redundant changes that do not belong to a certain commit.
 We can simply get information about the mode using the git command
 \emph{status}. \cite{gitpro2009} chapter 2.2
+
+\subsection{How does git store its data?}
+Git uses a unique store model compared to other common DVCS like Baazar or Mercurial. 
+In tradional distributed or normal version control the system keeps differences between revision A and B. 
+These changes are saved and marked with a revision number. 
+So you can, at any time, switch back to any revision and rebuild the complete content.
+This does have some major downsides which we will see later. \\
+Git does handle it quite different. It takes socalled \emph{snapshots} in every
+new version. So if file A changes in your repository the next commit git will take a new snapshot of this file and all other files. 
+To reduce overhead not changed files are linked to the identical file in the previous verion. 
+It creates a new minifile system rather than a VCS, enabling you all the features normal version 
+control would give you and gives you some additional on top of it. \cite{gitpro2009} 
+
+\subsection{Checksums for integrity}
+
+\zitat{Every single piece of data, when git tracks your content, we compress it
+we delta it against everything else, but we also do a SHA1 hash of the content
+and we actually check it when we use it. If you have discorruption if you have
+dramcorruption if you have any kind problems at all git will notice them. It is
+not a question of if, it is a guarantee} \cite{googletechtalk2007}
+
+Git is secure. As you can see in Linus Torvalds speech, git uses the SHA1-Hash
+as an integrity feature. Secure Hash Algorithm 1 is a string with 40 hexadezimal
+characters. It creates a checksum of two pieces of data and makes it nearly
+impossible that 2 files have the same checksum. This makes discorruption or loss
+of data impossible without notice. \cite{gitpro2009} chapter  1.3
+
+\subsection {Branching and merging}
+
+Branching and merging are major features in git. But also like the staging mode
+branching and merging can be skipped and you can just stick to the master
+branch. \\
+Assumed we have a new feature request for the ruby on rails project called
+newfeature we add a branch:
+\begin{lstlisting}
+$ git branch newfeature
+$ git checkout newfeature
+\end{lstlisting}
+
+To understand what branching do technically we have to take a deeper look at
+what a commit does internally: \
+After you execute the commit command Git creates a new commit object that
+contains a pointer to the snapshot of your content you staged, some metadata and
+pointers to you previous commits. If there are zero previous commits no pointer
+is stored and if you merged a branch the commit can point to multible previous commits.
+
+After staging a single file, Git creates a checksum (see
+\ref{SHA1}) and stores the version in the repository. Additionally it adds the
+checksum to the staging area. This file is now a blob object.
+When you execute the commit command, Git will create checksums for each
+subdirectory and adds this tree object to the repository. Finally git creates
+the commit object that contains the metadata and a pointer to the root object
+tree. This is necessary to be able to recreate the snapshot.
+
+We have three new objects in our repository describing the part of the history
+of the project. There is one blob for the file we staged, the tree object that
+points to the blob and a commit object that points to that tree object including
+all metadata, like commit message and author. \cite{gitpro2009} chapter 3.1 \\
+
+Lets see what the releationship between these objects look like:
+
+\begin{figure}[h]
+  \includegraphics{img/branch2}
+  \caption{Git objects after a commit}
+  \label{fig: git objects after a commit}
+  %\author{Richard Plangger}
+\end{figure}
+
+It is obvious that very commit looks like this and every commit, exept the first
+has one or more parents.
+A branch is just a moveable pointer towards a commit. Also the master branch is
+one of those ligthweight pointers towards a commit. In addition there is a
+pointer called HEAD which specifies which branch we are currently on. So by
+executing the command \emph{git checkout [branchname]} we move the HEAD
+pointer.\cite{gitpro2009} chapter 3.1 \\
+
+Now it is time to make a new commit in the newfeature branch and switch back to
+the master branch and also commit some changes.
+This would look like the next picture inspried by the git pro book:
+
+\begin{figure}[h]
+  \includegraphics{img/branch1}
+  \caption{new branch}
+  \label{fig: a new branch}
+  %\author{Richard Plangger}
+\end{figure}
+
+There has been created a new commit pointing to one commit of the master branch.
+The new commit in its own branch now contains the history from the master branch
+to the commit \emph{19eb2} and the changes in the new branch. The last commit
+that has been made in the masterbranch is not visible in our new branch. \\
+Because a new branch in git is equal to a single file with the SHA1 checksum
+branches are very cheap. In other version control systems branching means to
+fully copy the whole content into a new folder and not just create a 41 byte big
+file. This can take seconds or even minutes and discourages developers to use
+this powerful feature. \cite{gitpro2009} chapter 3.1 \\
 
 \subsection {What makes git to a DVCS?}
 
@@ -122,7 +218,7 @@ Linus Torvalds did a quite good job to summarize what distributed means:
 
 \zitat{Being distributed very much means that you do not have one
 central location that keeps track of your data, no single place more important
-than any other place \ldots } \cite{linustorvaldsgoogletalk2007}
+than any other place} \cite{googletechtalk2007}
 
 Nearly all commands that git offer you are local operations. There is no need to
 have any network connection at all to work on your project and track changes
