@@ -102,11 +102,13 @@ The picture taken out of the git pro book illustrates how files change their
 lifecycle modes:
 
 \begin{figure}[h]
+  \centering
   \includegraphics{img/file_status_lifecycle}
   \caption{File status lifecycle}
   \label{fig:File status lifecycle}
-  \cite{piclifecycle}
-\end{figure}
+  
+\end{figure} \footnote{http://progit.org/figures/ch2/18333fig0201-tn.png last accessed on 
+09.11.2010}
 
 As we can see there are four modes a file can have. First we have to track them
 once to get them into the lifecycle. If we modify we can use \emph{-a} on the
@@ -130,22 +132,22 @@ control would give you and gives you some additional on top of it. \cite{gitpro2
 
 \subsection{Checksums for integrity}
 
-\zitat{Every single piece of data, when git tracks your content, we compress it
+\zitat{ Every single piece of data, when git tracks your content, we compress it
 we delta it against everything else, but we also do a SHA1 hash of the content
 and we actually check it when we use it. If you have discorruption if you have
 dramcorruption if you have any kind problems at all git will notice them. It is
-not a question of if, it is a guarantee} \cite{googletechtalk2007}
+not a question of if, it is a guarantee \ldots } \cite{googletechtalk2007}
 
 Git is secure. As you can see in Linus Torvalds speech, git uses the SHA1-Hash
 as an integrity feature. Secure Hash Algorithm 1 is a string with 40 hexadezimal
 characters. It creates a checksum of two pieces of data and makes it nearly
 impossible that 2 files have the same checksum. This makes discorruption or loss
-of data impossible without notice. \cite{gitpro2009} chapter  1.3
+of data impossible without notice. \footnote{ \cite{gitpro2009} http://progit.org/book/ch1-3.html }
 
-\subsection {Branching and merging}
+\subsection {Branching}
 
-Branching and merging are major features in git. But also like the staging mode
-branching and merging can be skipped and you can just stick to the master
+Branching is a major features in git. But also like the staging mode
+branching can be skipped and you can just stick to the master
 branch. \\
 Assumed we have a new feature request for the ruby on rails project called
 newfeature we add a branch:
@@ -172,7 +174,8 @@ tree. This is necessary to be able to recreate the snapshot.
 We have three new objects in our repository describing the part of the history
 of the project. There is one blob for the file we staged, the tree object that
 points to the blob and a commit object that points to that tree object including
-all metadata, like commit message and author. \cite{gitpro2009} chapter 3.1 \\
+all metadata, like commit message and author. 
+\\
 
 Lets see what the releationship between these objects look like:
 
@@ -189,28 +192,55 @@ A branch is just a moveable pointer towards a commit. Also the master branch is
 one of those ligthweight pointers towards a commit. In addition there is a
 pointer called HEAD which specifies which branch we are currently on. So by
 executing the command \emph{git checkout [branchname]} we move the HEAD
-pointer.\cite{gitpro2009} chapter 3.1 \\
+pointer. 
 
-Now it is time to make a new commit in the newfeature branch and switch back to
+Now it is time to make a new commit in the crazyidea branch and switch back to
 the master branch and also commit some changes.
-This would look like the next picture inspried by the git pro book:
-
+This could look like this:
 \begin{figure}[h]
-  \includegraphics{img/branch1}
-  \caption{new branch}
+  \centering
+  \includegraphics{img/branch3}
+  \caption{The new branch crazyidea}
   \label{fig: a new branch}
-  %\author{Richard Plangger}
 \end{figure}
 
 There has been created a new commit pointing to one commit of the master branch.
 The new commit in its own branch now contains the history from the master branch
-to the commit \emph{19eb2} and the changes in the new branch. The last commit
-that has been made in the masterbranch is not visible in our new branch. \\
-Because a new branch in git is equal to a single file with the SHA1 checksum
-branches are very cheap. In other version control systems branching means to
+to the commit where it was splitted from and the changes in the new
+branch. The last two commits that has been made in the masterbranch are not
+visible in our new branch. 
+
+Because a new branch in git is equal to a single
+file with the SHA1 checksum branches are very cheap. In other version control systems branching means to
 fully copy the whole content into a new folder and not just create a 41 byte big
 file. This can take seconds or even minutes and discourages developers to use
-this powerful feature. \cite{gitpro2009} chapter 3.1 \\
+this powerful feature. \footnote{ \cite{gitpro2009} http://progit.org/book/ch3-1.html }
+
+\subsection {Merging}
+
+Merging is the need of putting together data from different branches. Maybe one
+day our crazy idea will turn out to be brilliant and also the crazyidea is
+stable enough to put it to our master branch we need a way to put them together.
+At this point the merge command pops in:
+
+\begin{lstlisting}
+$ git merge [branchname]
+\end{lstlisting}
+
+Git now merges all differences into the branch we're currently on and we can see
+the result:
+\begin{figure}[h]
+  \centering 
+  \includegraphics{img/merge1}
+  \caption{Merged the crazy idea into the master branch}
+  \label{}
+\end{figure}
+
+After the merge all data that is not contained in master but in crazyidea is put
+together and will be part of master. As we can see this is very powerful feature
+that allows developers to be flexible and work on several different parts of the
+project, without breaking the whole project. \footnote{ \cite{gitinternals2008}
+p. 30-31}
 
 \subsection {What makes git to a DVCS?}
 
@@ -218,7 +248,7 @@ Linus Torvalds did a quite good job to summarize what distributed means:
 
 \zitat{Being distributed very much means that you do not have one
 central location that keeps track of your data, no single place more important
-than any other place} \cite{googletechtalk2007}
+than any other place \ldots } \cite{googletechtalk2007}
 
 Nearly all commands that git offer you are local operations. There is no need to
 have any network connection at all to work on your project and track changes
@@ -226,3 +256,4 @@ afterwards. Moreover the whole history of your project is contained in your
 local repository. Also all contributors of one project have that history if
 they pull from you. Hence no repository has more information about the project
 than the other.
+

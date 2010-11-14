@@ -1,0 +1,37 @@
+\section {Comparison to other DVCS}
+
+There are several more distributed version control systems
+we are going to explain some differences to git.
+Some are:
+
+  \begin{enumerate}
+     \item \emph{Bazaar}. Powered by Cannocial. Handles the whole Ubuntu source
+     repository at launchpad.net
+     \item \emph{Mercurial} An opensource project initiated by Matt Mackall
+     \item \emph{Perforce}. Powered by Perforce Software Inc.
+     \item \emph{Visual SourceSafe} Powered by Microsoft
+  \end{enumerate}
+  
+We are going to take a closer look at \emph{Baazar} and \emph{Mercurial}
+compared to Git.
+
+\subsection {Data storage}
+
+As already mentioned git uses it's unique storage model creating new snapshots
+every commit. Mercurial also thinks of its data as a snapshot. The difference
+is though, that basically Mercurial also creates deltas from a revsion A to B.
+Those deltas are infact the difference between two revsions. When a cumulative
+amount of deltas is stored to a file, Mercurial creates a new snapshot of this file. 
+\footnote{\cite {hgbook2009}
+http://hgbook.red-bean.com/read/behind-the-scenes.html, section Fast retrieval,
+accessed on 14.11.2010}
+Baazar TODO!!
+
+\subsection {Speed}
+
+Git claims to be a very efficient system. To mesure that there are several
+methods. The website \emph{whygitisbetterthanx.com} did a quite good job to
+summarize why git does handle things quite fast.
+
+\subsection {Size}
+
