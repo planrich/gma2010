@@ -1,0 +1,50 @@
+\section{Explanation of terms}
+
+In this chapter we want to explain some of the phrases, words and terms used through out the article.
+
+\subsection{Repository}
+
+A repository in DCVS terms is a folder which can contain sub folders and files of all categories. 
+This folder is tracked by the DCVS so there is a history for every file whether it was renamed, deleted or changed. 
+How these changes are tracked is different from system to system. CVS for example “isolates” 
+files and handles them individually. So each file has its own version number. If you change a file, CVS will 
+save the delta (i.e. what has changed) and give the file a new number. SVN does it a little bit 
+different. If you change one file, the whole repository gets a new version number, usually count from 1, 2 to n. 
+In SVN terms such a version of the repository is referred to as a “revision”.
+
+Git also handles the repository as a whole. It saves each new file version as a whole and not just the delta as SVN and CVS does. 
+In Git there are no incrementing version numbers, instead git uses the SHA-1 checksum. For each file there is such a 
+checksum and the checksum which represents a certain revision is a sum of these checksums. 
+This explanation might not be 100 percent correct but its a good approximation for those unfamiliar with version control.
+
+
+\subsection{Commit}
+
+Committing means that you make all your changes you have made to some files inside the repository permanent. 
+After committing you have a new revision of your repository. Its possible to move back and forth between commits so you can work 
+from an older version if you have screwed something up.
+
+Normally with each commit there is saved some meta information like, who has committed and what has been done since the last commit. 
+It's good practice to give detailed information about what files have changed and the purpose of these changes, so others working 
+on the repository know whats going on.
+
+
+\subsection{Branch}
+
+Branching means that you diverge from your main line and continue working without messing up the main line of development. 
+Branches are a feature where git really shines because they are very lightweight and really fast compared to other VCS.
+
+
+\subsection{Merge}
+
+When you want to have changes made in a branch also applied in another branch, you have to merge them. 
+Because its very easy to branch and merge with git its very common to have a branch for each feature or 
+bug and merge them back into a branch which holds the stable code when they are done.
+
+\subsection{Tagging}
+
+Tagging means that you mark a certain version or revision with a tag. 
+Assigning a tag to a version is just for convenience, normally its used to tag important project milestones. 
+For example if your application which you are developing reaches version 1.5, you will assign a tag named “v1.5” 
+to the commit or revision which was used to build the “application 1.5” or which represents the “application 1.5”. 
+So it will be very easy to find the commit you need in the future if you want an older version of your application.
