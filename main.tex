@@ -10,6 +10,11 @@
 
 \usepackage{listings} 
 
+\newcommand{\eg}{e.\,g., }
+\newcommand{\ie}{i.\,e., }
+\def\lqq{\lq\lq}
+\def\rqq{\rq\rq}
+\def\dq#1{\lqq #1\rqq}
 \def\zitat#1{\lqq \emph{#1}\rqq}
 
 \begin{document}
@@ -27,26 +32,43 @@
 
 \maketitle
 
+% abstract
 \abstract {... to be continued 
 }
 
+% - Introduction
 \input {introduction}
+
+% -
 \input{dvcshistory}
 
+% - General description DCVS (Properties)
+		
+		
+		
+% - A brief history of DCVS (Klaus)
+
+% - Begriffserklärung (Simon)
 \input{explanation_of_terms}
 
+%	- Changing of Workflows (Simon)
 \input{changeofworkflows}
-% GIT
-%   +-- History
 
-%   +-- How does git work
-\input {how_does_git_work}
-%   +-- Comparison to other DVCS
-\input {comparison_to_other_dvcs}
-%   +-- Current Development. How uses git?
-\input {current_development}
-%   +-- History of Git
-\input {githistory}
+
+
+
+% GIT
+  %   +-- History
+  \input {githistory}
+  %   +-- How does git work
+  \input {how_does_git_work}
+  %   +-- Comparison to other DVCS
+  \input {comparison_to_other_dvcs}
+  %   +-- Current Development. How uses git?
+  \input {current_development}
+
+% Conclusion
+\input {conclusion}
 
 % References
 \bibliographystyle{unsrt}
