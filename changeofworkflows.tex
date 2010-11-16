@@ -1,0 +1,24 @@
+\section {Change of Workflows}
+
+Before Distributed Version Control Systems (DVCS) were introduced, Centralized Version Control Systems (CVCS) were the common system to handle team development.
+These traditional CVCS were built up in the following way: One central server stores the content of the project, along with a history of the changes made. This means that the complete content (all changes) have to pass the central server. In other words: One developer commits changes (to the server), and all other developers have to update to this version from the server.
+
+//INCLUDE PICTURE - CENTRALIZED VCS
+
+Although this system might look simple and effective at the first place, it has quite a few drawbacks. Let's just assume one developer commits corrupted content (not working source-code, corrupt files, ...).
+The other developers will update this version and recognize that what they updated is corrupted, but unfortunately it is already too late at that point of time.
+Another problem CVCS has is the lack of support for experimental development. To do things like these, you are almost forced to store a local version where you are experimenting,
+but as soon as the developer needs help, it is simply impossible with a centralized setup.
+
+
+DVCS work in a different way. The main difference compared to the centralized systems is, that there is no central server storing the content.
+It is a peer-to-peer setup. Every developer stores the complete project, along with the change history, locally. 
+
+//INCLUDE PICTURE - DISTRIBUTED VCS
+
+Every developer works locally on the
+project and is able to commit his changes. Other developers - and here is one of the main advantages compared to a centralized system - can pull these changes,
+but they are not required to do so!
+The problem with experimental development is also not present in DVCS. Every developer can create as many so called "`Branches"' of the project as he wants. This way, he can simply commit the branch. If other developers like to, they can merge the content from the different branches. Once again: They are not forced to do so.
+
+\cite{branchingstrategies2010}
