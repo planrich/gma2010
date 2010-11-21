@@ -38,6 +38,45 @@ section. Then we commit the changes with a short and descriptive message. After
 this git stores the changes into the repository and points the default master
 branch to the new commit. \cite{gitinternals2008} p 55 \\
 
+\subsection {History}
+
+With every commit Git will append information to the history of your project. This history
+can be browsed using the \emph {git log} command:
+
+\begin{lstlisting}
+$ git log
+commit 8133a...
+Author: User <user@provider.org>
+Date:   Wed Nov 17 19:29:03 2010 +0100
+
+    [commit message]
+    
+commit 3131f...
+Author: User <user@provider.org>
+Date:   Wed Nov 17 19:29:03 2010 +0100
+
+    [commit message]
+    
+...
+\end{lstlisting}
+
+Each commit consists of 4 parts: the commit SHA1 string, the author with his e-mail address, the commit date and a short descriptive message.
+But this is not all you can see in the history. With several additional commands you can format the history or even display all the changes.
+As an example this code formats the history quite different:
+
+\begin{lstlisting}
+$ git log 
+   --pretty=format:"%h, %ar : %s"
+8133ae1 4 days ago : fix issue 8645
+741a1bc 4 days ago : merged crazyidea
+3131fd0 4 days ago : added scripts
+\end{lstlisting}
+
+There are several more formating place holders that can be found at: http://progit.org/book/ch2-4.html.
+\footnote{\cite{gitpro2009} http://progit.org/book/ch2-3.html on 21.11.2010}\\
+
+As an example for the capability of the log command, there is a shell script\footnote{https://github.com/d1rk/git-ftp on 21.11.2010} on GitHub that allows you to upload your git repository over the ftp protocol. This script uses the git log command to get enough information to upload the changes to the ftp-server. 
+
 \subsection{Git over network}
 
 After there has been committed a huge amount of work in the local ruby on rails
@@ -98,7 +137,8 @@ $ git commit -a -m "message"
 The parameter \emph{-a} automatically adds the file to the staging mode and
 commits it. \cite{gitpro2009} chapter 2.2
 
-The picture taken out of the git pro book illustrates how files change their
+The picture\footnote{http://progit.org/figures/ch2/18333fig0201-tn.png last accessed on 
+09.11.2010} taken out of the git pro book illustrates how files change their
 lifecycle modes:
 
 \begin{figure}[h]
@@ -107,8 +147,7 @@ lifecycle modes:
   \caption{File status lifecycle}
   \label{fig:File status lifecycle}
   
-\end{figure} \footnote{http://progit.org/figures/ch2/18333fig0201-tn.png last accessed on 
-09.11.2010}
+\end{figure} 
 
 As we can see there are four modes a file can have. First we have to track them
 once to get them into the lifecycle. If we modify we can use \emph{-a} on the
@@ -180,7 +219,7 @@ all metadata, like commit message and author.
 Lets see what the releationship between these objects look like:
 
 \begin{figure}[h]
-  \includegraphics{img/branch3}
+  \includegraphics{img/branch2}
   \caption{Git objects after a commit}
   \label{fig: git objects after a commit}
   %\author{Richard Plangger}
