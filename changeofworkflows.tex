@@ -1,9 +1,9 @@
 \section{Changing of workflows}
 
 With the evolution form Centralized Version Control System to Distributed Version Control Systems there also 
-evolved new ways of how development processes can be organized. In this chapter we want to show differences 
+evolved new ways of how development processes can be organized. In this section we want to show differences 
 between centralized and distributed systems, especially we work with them, where problem can occur by using 
-centralized systems and how the distributed systems try to solve them. At the the end of the chapter we want 
+centralized systems and how the distributed systems try to solve them. At the the end of the section we want 
 to show some common models to handle projects of different sizes.
 
 \subsection{Workflow differences}
@@ -37,7 +37,7 @@ So it is very hard to create a branch just to implement some new feature or to f
 point is that all the branches are visible and accessible for everyone. So there can only 
 be one branch called “test”.
 
-As the reader may see in the chapter about git, it is very common in distributed environments to 
+As the reader may see in the section about git, it is very common in distributed environments to 
 do a lot of branching and merging. The reason for this is that DVCS like Mercurial, Git and Baazar 
 have the design goal to make branching and merging easy and fast. So a developer may create a branch 
 for each issue in the issue tracker. When he has solved the issue he merge the fix back to the main 
@@ -51,10 +51,10 @@ the branch locally, nobody cares.
 \subsection{Distributed workflow models}
 
 These models were described in the Pro Git Book \footnote{http://progit.org/book/ch5-1.html} and are 
-worth mentioned here. The images are also adopted from the book but made a little bit smaller.
+worth mentioned here. The images are also adopted from the book but made a little bit smaller and more compact.
 
-Because every developer acts as a contributor and as a server there are more possibilities to organize 
-your development process then there are are in a centralized environment.
+In a distirbuted environment every developer acts as a contributor and as a server at the same time. So there are more 
+possibilities to organize development processes then there are are in a centralized environment.
 
 
 \subsubsection{Centralized Model}
@@ -79,7 +79,7 @@ First of all you can use a DCVS like a normal centralized system (see Figure \re
 \end{figure*}
 
 This workflow becomed very common as sites like GitHub started to evolve. In
-this model (see Figure xx) just a handful of people has write access to the central (or “official”) repository. 
+this model (see Figure \ref{fig:mod_intMan}) just a handful of people has write access to the central (or “official”) repository. 
 This people are called integration managers. In smaller projects there might be just one integration manager and their 
 number may grow with the project size. The task of an integration manager is to pull changes from developers and merge 
 them into the central repository. They also have to decide which changes are worth merging.

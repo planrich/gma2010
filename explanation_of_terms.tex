@@ -1,7 +1,11 @@
 \section{Explanation of terms}
 
-In this chapter we want to explain some of the phrases, words and terms used through out the article so the 
+In this section we want to explain some of the phrases, words and terms used through out the article so the 
 readers unfamiliar with version control might get an overall idea what version control is about.
+
+We will often refer to CVS\footnote{http://www.nongnu.org/cvs/} (Concurrent Versions System) and SVN\footnote{http://subversion.apache.org/} (Subversion) which are the most used centralized Version Control Systems.
+
+It is also noteworthy that the term “Revision Control System (RCS)” may be used instead of “Version Control System (VCS)”. These two are interchangeable. In other books and articles revision control may also be referred to as “Software Configuration Management (SCM)” or “Source code control”. Those terms have different meanings in different contexts and there is an ongoing discussion about the definitions of those terms.
 
 \subsection{Repository}
 
@@ -41,7 +45,7 @@ you change your local working copy to another version.
 \subsection{Branch}
 
 Branching means that you diverge from your main line and continue working without messing up the main line of 
-development. Branches are a feature where git really shines because they are very lightweight and really fast compared to other VCSs.
+development. Branches are a feature where Git really shines because they are very lightweight and really fast compared to other VCSs.
 
 \begin{figure}[ht]
   \centering
@@ -51,8 +55,8 @@ development. Branches are a feature where git really shines because they are ver
 \end{figure}
 
 Figure \ref{fig:gen_branch} shows a little example how such a branch looks like. The green version 1 in 
-this example is the initial commit with some files. Now developer A continues development in the main line 
-by by fixing some bugs and improving the current version. Developer B know wants to add some new experimental 
+this example is the initial commit with some files. Now developer A continues development in the main line by fixing 
+some bugs and improving the current version. Developer B know wants to add some new experimental 
 features to version 1. Because developer B doesn't want to mess up the hopefully stable main line and the 
 changes of developer A, he creates a branch where he can develop the new features until they are stable. 
 So the orange versions 3 and 4 are the branch and the green versions is the stable main line.
