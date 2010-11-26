@@ -11,7 +11,7 @@ One would be by simply creating a new empty git repository in your directory of 
 $ git init
 \end{lstlisting}
 This command creates a new subdirectory .git/ where all your version control
-data is stored. \cite{gitinternals2008} p 55 \\
+data is stored. \cite[Page 55]{gitinternals2008} \\
 The second is to clone an existing repository over an URL. Possible protocols
 are FILE SSH HTTPS HTTP or GIT. Of course on the target location must host a
 git repository:
@@ -20,7 +20,7 @@ $ git clone
     git://github.com/rails/rails.git
 \end{lstlisting}
 Git will clone the whole ruby on rails project from github and we're
-ready to get to work. \cite{gitinternals2008} p 56 \\
+ready to get to work. \cite[Page 56]{gitinternals2008} \\
 
 After we have a new repository we can add some content:
 \begin{lstlisting}
@@ -36,7 +36,7 @@ track this file simply by telling git to add the file to the index. Additionally
 git now stages the file, but we are going to cover the staging feature later in the next
 section. Then we commit the changes with a short and descriptive message. After
 this git stores the changes into the repository and points the default master
-branch to the new commit. \cite{gitinternals2008} p 55 \\
+branch to the new commit. \cite[Page 55]{gitinternals2008} \\
 
 \subsection {History}
 
@@ -72,8 +72,7 @@ $ git log
 3131fd0 4 days ago : added scripts
 \end{lstlisting}
 
-There are several more formating place holders that can be found at: http://progit.org/book/ch2-4.html.
-\footnote{\cite{gitpro2009} http://progit.org/book/ch2-3.html on 21.11.2010}\\
+There are several more formating place holders that can be used. \cite[Chapter 2.4]{gitpro2009} \\
 
 As an example for the capability of the log command, there is a shell script\footnote{https://github.com/d1rk/git-ftp on 21.11.2010} on GitHub that allows you to upload your git repository over the ftp protocol. This script uses the git log command to get enough information to upload the changes to the ftp-server. 
 
@@ -99,7 +98,7 @@ $ git remote add [name] [url]
 \end{lstlisting}
 
 This command links a short name to any url and you can share your
-work over any network git is designed for. \cite{gitpro2009} chapter 2.9 \\
+work over any network git is designed for. \cite[Chapter 2.9]{gitpro2009}  \\
 
 The last very important command is:
 \begin{lstlisting}
@@ -116,7 +115,7 @@ If you dont need this very powerful feature you can simply execute:
 $ git pull origin
 \end{lstlisting}
 Git will automatically merge the changes into your master branch.
-\cite{gitpro2009} chapter 2.9 \\
+\cite[Chapter 2.9]{gitpro2009} \\
 
 \subsection {Staging}
 
@@ -135,9 +134,9 @@ $ git commit -a -m "message"
 \end{lstlisting}
 
 The parameter \emph{-a} automatically adds the file to the staging mode and
-commits it. \cite{gitpro2009} chapter 2.2
+commits it. \cite[Chapter 2.2]{gitpro2009}
 
-The picture\footnote{http://progit.org/figures/ch2/18333fig0201-tn.png last accessed on 
+The picture\footnote{http://progit.org/figures/ch2/18333fig0201-tn.png accessed on 
 09.11.2010} taken out of the git pro book illustrates how files change their
 lifecycle modes:
 
@@ -155,7 +154,7 @@ commit command to automatically stage and commit them, or we can take alot more
 control of our repository and stage them manually and avoid mistakes and
 redundant changes that do not belong to a certain commit.
 We can simply get information about the mode using the git command
-\emph{status}. \cite{gitpro2009} chapter 2.2
+\emph{status}. \cite[Chapter 2.2]{gitpro2009} 
 
 \subsection{How does git store its data?}
 Git uses a unique store model compared to other common DVCS like Baazar or Mercurial. 
@@ -181,7 +180,7 @@ Git is secure. As you can see in Linus Torvalds speech, git uses the SHA1-Hash
 as an integrity feature. Secure Hash Algorithm 1 is a string with 40 hexadezimal
 characters. It creates a checksum of two pieces of data and makes it nearly
 impossible that 2 files have the same checksum. This makes discorruption or loss
-of data impossible without notice. \footnote{ \cite{gitpro2009} http://progit.org/book/ch1-3.html }
+of data impossible without notice. \cite[Chapter 1.3]{gitpro2009}
 
 \subsection {Branching}
 
@@ -202,8 +201,7 @@ contains a pointer to the snapshot of your content you staged, some metadata and
 pointers to you previous commits. If there are zero previous commits no pointer
 is stored and if you merged a branch the commit can point to multible previous commits.
 
-After staging a single file, Git creates a checksum (see
-\ref{SHA1}) and stores the version in the repository. Additionally it adds the
+After staging a single file, Git creates a checksum and stores the version in the repository. Additionally it adds the
 checksum to the staging area. This file is now a blob object.
 When you execute the commit command, Git will create checksums for each
 subdirectory and adds this tree object to the repository. Finally git creates
@@ -251,9 +249,9 @@ visible in our new branch.
 
 Because a new branch in git is equal to a single
 file with the SHA1 checksum branches are very cheap. In other version control systems branching means to
-fully copy the whole content into a new folder and not just create a 41 byte big
+fully copy the whole content into a new folder and not just create a 41 byte
 file. This can take seconds or even minutes and discourages developers to use
-this powerful feature. \footnote{ \cite{gitpro2009} http://progit.org/book/ch3-1.html }
+this powerful feature. \cite[Chapter 3.1]{gitpro2009}
 
 \subsection {Merging}
 
@@ -278,10 +276,9 @@ the result:
 After the merge all data that is not contained in master but in crazyidea is put
 together and will be part of master. As we can see this is very powerful feature
 that allows developers to be flexible and work on several different parts of the
-project, without breaking the whole project. \footnote{ \cite{gitinternals2008}
-p. 30-31}
+project, without breaking the whole project. \cite[Page 30-31]{gitinternals2008}
 
-\subsection {What makes git to a DVCS?}
+\subsection {What makes git a DVCS?}
 
 Linus Torvalds did a quite good job to summarize what distributed means:
 

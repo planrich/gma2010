@@ -22,10 +22,7 @@ every commit. Mercrial also thinks of its data as a snapshot. The difference
 is though, that basically Mercurial also creates deltas from a revsion A to B.
 Those deltas are infact the difference between two revsions. When a cumulative
 amount of deltas is stored to a file, Mercurial creates a new snapshot of this file. 
-\footnote{\cite {hgbook2009}
-http://hgbook.red-bean.com/read/behind-the-scenes.html, section Fast retrieval,
-accessed on 14.11.2010}
-Baazar plans to change its model and use socalled \emph{nested trees}. At the level of data storage they are quite similar to git. The difference is that nested trees use unversioned branch data to store data instead of version files. \footnote{ http://wiki.bazaar.canonical.com/NestedTreesDesign\#git-submodules on 21.11.2010 } Baazar ist no well documented, in fact there are very good tutorials how to use Baazar. But when it comes to technical details, there is not much official documentation.
+\cite[Chapter 4]{hgbook2009} Baazar plans to change its model and use socalled \emph{nested trees}. At the level of data storage they are quite similar to git. The difference is that nested trees use unversioned branch data to store data instead of version files. \footnote{ http://wiki.bazaar.canonical.com/NestedTreesDesign\#git-submodules on 21.11.2010 } Baazar ist no well documented, in fact there are very good tutorials how to use Baazar. But when it comes to technical details, there is not much official documentation.
 
 \subsection {Speed and size}
 

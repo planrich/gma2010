@@ -5,7 +5,7 @@ readers unfamiliar with version control might get an overall idea what version c
 
 We will often refer to CVS\footnote{http://www.nongnu.org/cvs/} (Concurrent Versions System) and SVN\footnote{http://subversion.apache.org/} (Subversion) which are the most used centralized Version Control Systems.
 
-It is also noteworthy that the term “Revision Control System (RCS)” may be used instead of “Version Control System (VCS)”. These two are interchangeable. In other books and articles revision control may also be referred to as “Software Configuration Management (SCM)” or “Source code control”. Those terms have different meanings in different contexts and there is an ongoing discussion about the definitions of those terms.
+It is also noteworthy that the term “Revision Control System (RCS)” may be used instead of “Version Control System (VCS)”. These two are interchangeable. In other books and articles revision control may also be referred to as “Software Configuration Management (SCM)” or “Source code control”. Those terms have different meanings in different contexts and there is an ongoing discussion about the definitions of those terms. \cite[Chapter 1]{hgbook2009}
 
 \subsection{Repository}
 
@@ -19,7 +19,7 @@ In SVN terms such a version of the repository is referred to as a “revision”
 
 Git also handles the repository as a whole. It saves each new file version as a whole and not just the delta as SVN and CVS does. 
 In Git there are no incrementing version numbers, instead git uses the SHA-1 checksum. For each file there is such a 
-checksum and the checksum which represents a certain revision is a sum of these checksums. 
+checksum and the checksum which represents a certain revision is a sum of these checksums. \cite[Chapter 2.3]{gitpro2009}
 This explanation might not be 100 percent correct but its a good approximation for those unfamiliar with version control.
 
 
@@ -38,14 +38,14 @@ on the repository know whats going on.
 
 In CVS and SVN a checkout is the operation of creating a local working copy of a certain version from the 
 central repository. In git checkout has a slightly different meaning. Creating a local working copy in git is 
-called “clone”. Checkout is called the operation of switching between different versions and branches. I.e. 
-you change your local working copy to another version.
+called “clone”. \cite[Chapter 2.1]{gitpro2009} Checkout is called the operation of switching between different versions and branches. I.e. 
+you change your local working copy to another version. \cite[Chapter 3.2]{gitpro2009}
 
 
 \subsection{Branch}
 
 Branching means that you diverge from your main line and continue working without messing up the main line of 
-development. Branches are a feature where Git really shines because they are very lightweight and really fast compared to other VCSs.
+development. Branches are a feature where Git really shines because they are very lightweight and really fast compared to other VCSs. \cite[Chapter 3]{gitpro2009}
 
 \begin{figure}[ht]
   \centering

@@ -2,7 +2,7 @@
 
 With the evolution form Centralized Version Control System to Distributed Version Control Systems there also 
 evolved new ways of how development processes can be organized. In this section we want to show differences 
-between centralized and distributed systems, especially we work with them, where problem can occur by using 
+between centralized and distributed systems, especially how we work with them, where problems can occur by using 
 centralized systems and how the distributed systems try to solve them. At the the end of the section we want 
 to show some common models to handle projects of different sizes.
 
@@ -31,7 +31,7 @@ to merge the changes back to the main line.
 
 The next big difference is the aspect of branching and merging. It is not so common to use branches 
 in centralized systems then it is in distributed ones. SVN for example doest not have a separate branch 
-mechanism at all.
+mechanism at all. \cite[Apache\_Subversion\#Tag- und Branchkonzept]{wikipedia}
 It is the task of the SVN administrator to organize the main line, branches and tags on the server. 
 So it is very hard to create a branch just to implement some new feature or to fix a single bug. Another 
 point is that all the branches are visible and accessible for everyone. So there can only 
@@ -50,7 +50,7 @@ the branch locally, nobody cares.
 
 \subsection{Distributed workflow models}
 
-These models were described in the Pro Git Book \footnote{http://progit.org/book/ch5-1.html} and are 
+These models were described in the Pro Git Book \cite[Chapter 5.1]{gitpro2009} and are 
 worth mentioned here. The images are also adopted from the book but made a little bit smaller and more compact.
 
 In a distirbuted environment every developer acts as a contributor and as a server at the same time. So there are more 
@@ -111,4 +111,4 @@ each developer, instead he can just trust the lieutenants below him and pull cha
 is not very common because it is very hierarchical and only starts to become effective if a project gets really big and complex.
 
 An example is the Linux kernel, where Linus Torvalds acts as the dictator and the lieutenants are 
-responsible for the different subsystems of the kernel.
+responsible for the different subsystems of the kernel. \footnote{http://en.wikipedia.org/wiki/Linux\_kernel\#Maintenance}
